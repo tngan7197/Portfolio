@@ -15,7 +15,7 @@ This project was developed as part of the "Business Intelligence im Controlling"
 3. **Plan vs. Actual Variance (2023–2024):** Actual sales exceeded target plans by ~5%. Material costs consistently exceeded budget, indicating a need for stricter procurement cost management.
 
 ## 📸 Dashboard Screenshots
-![Overview Dashboard](dashboard_overview.png)
+![Overview Dashboard](dashboard_overview.PNG)
 ![Customer & Employee Analysis](path/to/screenshot2.png)
 
 ## 📄 Full Project Presentation
