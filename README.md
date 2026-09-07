@@ -48,7 +48,7 @@ Ziel des Projekts war die Analyse von Finanz- und Betriebsdaten eines Automobilz
 
 ## Dashboard Overview
 
-![Executive Overview](dashboard_overview.png)
+![Executive Overview](dashboard_overview.PNG)
 *Abbildung 1: Analyse von Umsatz, EBIT und Materialkosten nach Sparten und Kunden.*
 
 ![Soll-Ist-Vergleich](plan_act_sales.png)
