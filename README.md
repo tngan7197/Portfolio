@@ -54,7 +54,7 @@ Ziel des Projekts war die Analyse von Finanz- und Betriebsdaten eines Automobilz
 ![Kunden- & Profitabilitätsanalyse](analyse_kunden.PNG)
 *Abbildung 2: Analyse von Umsatz, EBIT und Umsatzrendite (ROS) nach Kunden.*
 
-![Soll-Ist-Vergleich](analyse_plan_act_sales.png)
+![Soll-Ist-Vergleich](analyse_plan_act_sales.PNG)
 *Abbildung 3: Abweichungsanalyse Plan vs. Ist für Umsatz und Materialaufwand.*
 
 ## Tech Stack & Methoden
