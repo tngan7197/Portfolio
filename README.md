@@ -37,4 +37,4 @@ Ziel des Projekts war die Analyse von Finanz- und Betriebsdaten eines Automobilz
 * **Methoden:** Variance Analysis (Soll-Ist-Vergleich), Deckungsbeitrags- & ROS-Analysen, Lifecycle Costing
 
 ## Dokumentation
-* [Präsentationsfolien als PDF](./BIC_PowerPoint_StA_Gruppe_4.pptx)
+* [Präsentationsfolien als PDF](BIC_PowerPoint_StA_Gruppe_4.pptx)
