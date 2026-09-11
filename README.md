@@ -38,3 +38,4 @@ Ziel des Projekts war die Analyse von Finanz- und Betriebsdaten eines Automobilz
 
 ## Dokumentation
 * [Präsentationsfolien als PDF](BIC_PowerPoint_StA.pptx)
+* [Power BI Controlling Dashboard](BIC_Dashboard.pbix)
