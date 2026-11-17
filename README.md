@@ -4,7 +4,11 @@
 ![Controlling](https://img.shields.io/badge/Controlling-Soll--Ist_%7C_ROS_%7C_EBIT-1E293B?style=for-the-badge)
 ![Buchhaltung](https://img.shields.io/badge/Accounting-Abstimmung_%7C_Kostenkontrolle-0F766E?style=for-the-badge) 
 # Automotive Supplier Controlling & BI Performance Analysis (Power BI)
+> [!IMPORTANT]
+> **Kernergebnis Controlling:** Während *Electronics* einen ROS von **12,92 %** (2024) erzielt, weist *Mechanics* trotz 5 Mrd. € Umsatz einen negativen ROS von **-3,26 %** auf – dringender Restrukturierungsbedarf.
 
+> [!TIP]
+> **Mehrwert für die Buchhaltung:** Automatisierte Soll-Ist-Abgleiche (`Delta_AC/PL`) und einheitliche Währungslogik (`Mio. €` / `Mrd. €`) erleichtern die monatliche Plausibilitätsprüfung und Periodenabgrenzung.
 > **Kurzprofil für HR & Hiring Manager:** Projektdokumentation einer Studienarbeit im Modul *„Business Intelligence im Controlling“* (Gruppe von 4 Personen). Ziel war die Analyse von Finanz- und Betriebsdaten eines Automobilzulieferers (Tier-1) sowie der Aufbau eines interaktiven Power-BI-Dashboards zur Entscheidungsunterstützung des Managements, inklusive Präsentation vor Unternehmensvertretern[cite: 1].
 
 ---
