@@ -1,4 +1,8 @@
-
+![Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
+![DAX](https://img.shields.io/badge/DAX-005A9C?style=for-the-badge)
+![Power Query](https://img.shields.io/badge/Power_Query-217346?style=for-the-badge&logo=microsoftexcel&logoColor=white)
+![Controlling](https://img.shields.io/badge/Controlling-Soll--Ist_%7C_ROS_%7C_EBIT-1E293B?style=for-the-badge)
+![Buchhaltung](https://img.shields.io/badge/Accounting-Abstimmung_%7C_Kostenkontrolle-0F766E?style=for-the-badge) 
 # Automotive Supplier Controlling & BI Performance Analysis (Power BI)
 
 > **Kurzprofil für HR & Hiring Manager:** Projektdokumentation einer Studienarbeit im Modul *„Business Intelligence im Controlling“* (Gruppe von 4 Personen). Ziel war die Analyse von Finanz- und Betriebsdaten eines Automobilzulieferers (Tier-1) sowie der Aufbau eines interaktiven Power-BI-Dashboards zur Entscheidungsunterstützung des Managements, inklusive Präsentation vor Unternehmensvertretern[cite: 1].
