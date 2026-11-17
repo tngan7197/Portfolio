@@ -13,7 +13,7 @@
 
 ---
 
-## Executive Summary (30-Sekunden-Überblick)
+## Executive Summary
 * **Ausgangslage:** Auswertung von Umsatz, Materialkosten, EBIT, Volumen und Auftragseingang (*Order Intake / OI*) über drei Geschäftsbereiche (*Electronics, Battery, Mechanics*), sieben OEM-Kunden und drei Regionen[cite: 1].
 * **Zentrale Erkenntnisse:**
   * **Deutliche Ergebnisunterschiede nach Bereich:** *Electronics* ist der wichtigste Ertragstreiber (ROS Ist: **11,76 %** in 2023 bzw. **12,92 %** in 2024), während *Mechanics* bei ca. 5 Mrd. € Umsatz einen **negativen ROS (-4,78 % in 2023; -3,26 % in 2024)** aufweist und dringenden Handlungsbedarf erfordert[cite: 1].
@@ -31,7 +31,7 @@
 
 ### 2. Schnittstelle zur Buchhaltung (Abstimmung, Kostenstellen, Perioden)
 * **Datenabstimmung & Plausibilitätschecks:** Standardisierung von Währungseinheiten (`Mio. €` / `Mrd. €`) sowie Abgleich zwischen `Act_Sales`, `Act_Mat`, `Act_EBIT` und `Order Intake` zur frühzeitigen Erkennung von Auffälligkeiten[cite: 1].
-* **Kosten- & Periodenkontrolle:** Bei Planüberschreitungen im Materialbereich (*Act_Mat*) – insbesondere in margenschwachen Einheiten wie *Mechanics* oder *Battery* – bildet das Dashboard eine Grundlage für die Abstimmung von Materialverbräuchen, Preisabweichungen und periodengerechter Abgrenzung mit der Buchhaltung[cite: 1].
+* **Kosten- & Periodenkontrolle:** Bei Planüberschreitungen im Materialbereich (*Act_Mat*) – insbesondere in margenschwachen Einheiten wie *Mechanics* oder *Battery* – bildet das Dashboard eine Grundlage für die Abstimmung von Materialverbräuchen, Preisabweichungen und periodengerechter Abgrenzung mit der Buchhaltung [cite: 1].
 
 ---
 
