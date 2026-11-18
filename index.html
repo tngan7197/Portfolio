@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Plan-Ist-Analyse eines Automobilzulieferers | Power-BI-Case-Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap">
+<style>
+:root{--paper:#F6F7F9;--ink:#12263F;--mute:#5B6676;--rule:#D5DBE5;--panel:#EAEFF5;--fav:#0B7A75;--unf:#B3402A;--el:#4FC3DC;--ba:#A97BC9;--me:#A8A8A8;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0E1726;--ink:#E7ECF4;--mute:#9AA7BA;--rule:#2A3A52;--panel:#16223A;--fav:#3CC4BC;--unf:#F08A72;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0E1726;--ink:#E7ECF4;--mute:#9AA7BA;--rule:#2A3A52;--panel:#16223A;--fav:#3CC4BC;--unf:#F08A72;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1rem/1.6 "IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-variant-numeric:tabular-nums}
+.wrap{max-width:1040px;margin:0 auto;padding:0 clamp(1rem,4vw,2rem)}
+h1,h2,h3{font-family:"IBM Plex Serif",Georgia,"Times New Roman",serif;font-weight:600;line-height:1.2;margin:0}
+h1{font-size:clamp(2rem,5.2vw,3.2rem);letter-spacing:-.01em}
+h2{font-size:1.5rem;margin-bottom:.9rem}
+h3{font-size:1.15rem;margin:1.6rem 0 .4rem}
+p{margin:.5rem 0;max-width:68ch}
+.hero{padding:clamp(2.5rem,7vw,5rem) 0 2.5rem;border-bottom:2px solid var(--ink)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:2.5rem;align-items:end}
+.lead{font-size:1.15rem;margin-top:1.1rem}
+.meta{color:var(--mute);font-size:.92rem}
+.rep{width:100%;border-collapse:collapse;font-size:.95rem;background:var(--panel)}
+.rep caption{caption-side:top;text-align:left;font-weight:600;padding:.6rem .8rem;background:var(--ink);color:var(--paper)}
+th,td{padding:.5rem .8rem;text-align:right;border-bottom:1px solid var(--rule)}
+th:first-child,td:first-child{text-align:left}
+th{font-weight:600;color:var(--mute);font-size:.85rem}
+.fav{color:var(--fav);font-weight:600}.unf{color:var(--unf);font-weight:600}
+section{padding:2.6rem 0;border-bottom:1px solid var(--rule)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:1.2rem 1.5rem;margin:1.4rem 0 0;padding:0}
+.facts div{border-top:2px solid var(--ink);padding-top:.5rem}
+.facts dt{font:600 1.7rem/1.1 "IBM Plex Serif",Georgia,serif;margin:0}
+.facts dd{margin:.2rem 0 0;color:var(--mute);font-size:.92rem}
+.bars{margin:1rem 0;display:grid;gap:.6rem;max-width:34rem}
+.bar{display:grid;grid-template-columns:6.5rem 1fr 4.2rem;align-items:center;gap:.7rem;font-size:.95rem}
+.bar i{display:block;height:1.1rem}
+.bar .el{background:var(--el)}.bar .ba{background:var(--ba)}.bar .me{background:var(--me)}
+.bar b{text-align:right}
+figure{margin:1.2rem 0}
+figcaption{color:var(--mute);font-size:.9rem;margin-top:.4rem}
+svg{width:100%;height:auto;display:block;max-width:44rem}
+svg .gl line{stroke:var(--rule);stroke-width:1}
+svg text{fill:var(--mute);font:11px "IBM Plex Sans",sans-serif}
+svg .el{fill:var(--el)}svg .ba{fill:var(--ba)}svg .me{fill:var(--me)}
+svg .pk{fill:var(--ink)}svg .pt{fill:var(--ink);font-weight:600}
+.key{display:flex;gap:1.1rem;font-size:.88rem;color:var(--mute);margin:.3rem 0}
+.key span::before{content:"";display:inline-block;width:.8rem;height:.8rem;margin-right:.35rem;background:var(--c);vertical-align:-1px}
+.scroll{overflow-x:auto}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.two table{width:100%;border-collapse:collapse;font-size:.95rem}
+.two caption{text-align:left;font-weight:600;padding:.4rem 0}
+.pages,.tools{list-style:none;padding:0;margin:.6rem 0 0;display:flex;flex-wrap:wrap;gap:.5rem}
+.pages li,.tools li{border:1px solid var(--rule);padding:.25rem .7rem;font-size:.92rem}
+footer{padding:1.6rem 0 2.4rem;color:var(--mute);font-size:.88rem}
+.dl-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.2rem}.dl-row a,.dl a{display:inline-block;padding:.5rem .9rem;border:2px solid var(--ink);color:var(--ink);text-decoration:none;font-weight:600;font-size:.95rem}.dl-row a:hover,.dl a:hover{background:var(--ink);color:var(--paper)}.dl-row a:focus-visible,.dl a:focus-visible{outline:3px solid var(--fav);outline-offset:2px}.dl{display:grid;gap:1rem;margin-top:1rem}.dl div{display:grid;grid-template-columns:15rem 1fr;gap:1rem;align-items:center;border-top:1px solid var(--rule);padding-top:1rem}.dl span{color:var(--mute);font-size:.92rem}.contact{font-size:1.05rem}
+@media (max-width:760px){.hero .wrap{grid-template-columns:1fr}.two{grid-template-columns:1fr}.bar{grid-template-columns:5.5rem 1fr 3.8rem}.dl div{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<div>
+<h1>Plan-Ist-Analyse eines Automobilzulieferers</h1>
+<p class="lead">Ein Power-BI-Dashboard, das Auftragseingang, Plan und Ist vergleicht. Es zeigt, wo das Ergebnis entsteht, wo die Risiken liegen und wie verlässlich die Planung ist.</p>
+<p class="meta">Studienarbeit im Team aus 4 Personen. Power BI, DAX, Power Query, Excel.</p>
+<p class="dl-row"><a href="files/Case_Study_Controlling_Dashboard.pdf" download>Case Study (PDF)</a><a href="files/BIC_Dashboard.pbix" download>Power-BI-Datei</a><a href="files/BIC_PowerPoint_StA.pptx" download>Präsentation (PowerPoint)</a></p>
+</div>
+<table class="rep">
+<caption>Abweichungsbericht 2023–2024 (Plan_2023)</caption>
+<thead><tr><th></th><th>Plan</th><th>Ist</th><th>Abweichung</th></tr></thead>
+<tbody>
+<tr><td>Umsatz</td><td>3,69 Mrd. €</td><td>3,79 Mrd. €</td><td class="fav">+2,6 %</td></tr>
+<tr><td>Material</td><td>1,92 Mrd. €</td><td>1,98 Mrd. €</td><td class="unf">+3,3 %</td></tr>
+<tr><td>EBIT</td><td>234 Mio. €</td><td>278 Mio. €</td><td class="fav">+18,5 %</td></tr>
+</tbody></table>
+</div></header>
+<main>
+<section><div class="wrap">
+<h2>Ausgangslage</h2>
+<p>Ein Zulieferer mit drei Geschäftsbereichen (Electronics, Battery, Mechanics) beliefert sieben OEM-Kunden. Das Management braucht einen Überblick über Auftragseingang (OI), Plan und Ist: Wo entsteht das Ergebnis, wo liegen die Risiken, und wie verlässlich ist die Planung?</p>
+<dl class="facts">
+<div><dt>24,2 Mrd. €</dt><dd>Umsatz im Auftragseingang 2023–2032</dd></div>
+<div><dt>2,46 Mrd. €</dt><dd>EBIT, Marge 10,2 %</dd></div>
+<div><dt>13,1 Mrd. €</dt><dd>Material, 54 % vom Umsatz</dd></div>
+<div><dt>40</dt><dd>Projekte, 7 Kunden, 3 Einheiten</dd></div>
+<div><dt>3</dt><dd>rollierende Planversionen</dd></div>
+</dl>
+</div></section>
+<section><div class="wrap">
+<h2>Ergebnisse</h2>
+<h3>Electronics und Battery tragen das Ergebnis</h3>
+<p>Zusammen stehen sie für 93 % des EBIT. Mechanics erreicht nur 4,3 % Marge, und alle 12 Projekte liegen zwischen 2,2 % und 5,5 %: Das Problem ist strukturell, nicht ein einzelnes Projekt.</p>
+<div class="bars" role="img" aria-label="EBIT-Marge: Electronics 11,2 Prozent, Battery 11,6 Prozent, Mechanics 4,3 Prozent">
+<div class="bar"><span>Electronics</span><i class="el" style="width:93%"></i><b>11,2 %</b></div>
+<div class="bar"><span>Battery</span><i class="ba" style="width:96%"></i><b>11,6 %</b></div>
+<div class="bar"><span>Mechanics</span><i class="me" style="width:36%"></i><b>4,3 %</b></div>
+</div>
+<p class="meta">EBIT-Marge im Auftragseingang. Umsatzanteil: Electronics 51 %, Battery 33 %, Mechanics 17 %.</p>
+<h3>Die Planung ist vorsichtig</h3>
+<p>Der Plan liegt bei 80–82 % des Auftragseingangs, das Ist bei 83 %. Die Pläne sind rollierende 5-Jahres-Pläne: Der EBIT-Plan 2025 wurde von Version zu Version von 163,3 auf 153,7 Mio. € gesenkt (−5,9 %).</p>
+<h3>Der Umsatz erreicht 2029 den Höhepunkt</h3>
+<p>Danach fällt er bis 2032 auf 0,4 Mrd. €. 37 % des OI-Umsatzes stammen aus Projekten, deren Auftragseingang erst für 2025–2028 erwartet wird. Die Top-3-Kunden stehen für 54 % des Umsatzes.</p>
+<figure>
+<div class="key"><span style="--c:var(--el)">Electronics</span><span style="--c:var(--ba)">Battery</span><span style="--c:var(--me)">Mechanics</span></div>
+<svg viewBox="0 0 640 250" role="img" aria-label="Umsatz im Auftragseingang je Einheit 2023 bis 2032 in Milliarden Euro, Höhepunkt 2029 bei 3,5 Milliarden Euro"><g class="gl"><line x1="44" x2="628" y1="170.0" y2="170.0"/><text x="38" y="173.0" text-anchor="end">1</text><line x1="44" x2="628" y1="118.0" y2="118.0"/><text x="38" y="121.0" text-anchor="end">2</text><line x1="44" x2="628" y1="66.0" y2="66.0"/><text x="38" y="69.0" text-anchor="end">3</text><line x1="44" x2="628" y1="14.0" y2="14.0"/><text x="38" y="17.0" text-anchor="end">4</text></g><polygon class="el" points="44.0,169.6 108.9,140.9 173.8,139.9 238.7,148.6 303.6,147.1 368.4,134.4 433.3,125.2 498.2,159.0 563.1,200.5 628.0,216.7 628.0,222.0 563.1,222.0 498.2,222.0 433.3,222.0 368.4,222.0 303.6,222.0 238.7,222.0 173.8,222.0 108.9,222.0 44.0,222.0"/><polygon class="ba" points="44.0,148.7 108.9,112.6 173.8,111.9 238.7,121.0 303.6,118.6 368.4,93.7 433.3,48.0 498.2,69.1 563.1,148.9 628.0,199.0 628.0,216.7 563.1,200.5 498.2,159.0 433.3,125.2 368.4,134.4 303.6,147.1 238.7,148.6 173.8,139.9 108.9,140.9 44.0,169.6"/><polygon class="me" points="44.0,120.6 108.9,85.6 173.8,87.8 238.7,84.9 303.6,67.6 368.4,60.3 433.3,39.2 498.2,68.8 563.1,148.9 628.0,199.0 628.0,199.0 563.1,148.9 498.2,69.1 433.3,48.0 368.4,93.7 303.6,118.6 238.7,121.0 173.8,111.9 108.9,112.6 44.0,148.7"/><g class="gl"><text x="44.0" y="242" text-anchor="middle">2023</text><text x="108.9" y="242" text-anchor="middle">2024</text><text x="173.8" y="242" text-anchor="middle">2025</text><text x="238.7" y="242" text-anchor="middle">2026</text><text x="303.6" y="242" text-anchor="middle">2027</text><text x="368.4" y="242" text-anchor="middle">2028</text><text x="433.3" y="242" text-anchor="middle">2029</text><text x="498.2" y="242" text-anchor="middle">2030</text><text x="563.1" y="242" text-anchor="middle">2031</text><text x="628.0" y="242" text-anchor="middle">2032</text></g><circle cx="433.3" cy="39.2" r="3" class="pk"/><text class="pt" x="425.3" y="31.2" text-anchor="end">2029: 3,5 Mrd. €</text><text class="gl2" x="44" y="10">Mrd. €</text></svg>
+<figcaption>Umsatz im Auftragseingang je Einheit, in Mrd. €.</figcaption>
+</figure>
+</div></section>
+<section><div class="wrap">
+<h2>Plan und Ist im Detail</h2>
+<div class="two scroll">
+<table><caption>Plan_2023, 2023–2024</caption>
+<thead><tr><th></th><th>Plan</th><th>Ist</th><th>Abw.</th></tr></thead><tbody>
+<tr><td>Umsatz</td><td>3,69 Mrd. €</td><td>3,79 Mrd. €</td><td class="fav">+94 Mio. €</td></tr>
+<tr><td>Material</td><td>1,92 Mrd. €</td><td>1,98 Mrd. €</td><td class="unf">+64 Mio. €</td></tr>
+<tr><td>EBIT</td><td>234 Mio. €</td><td>278 Mio. €</td><td class="fav">+43 Mio. €</td></tr></tbody></table>
+<table><caption>Plan_2024, 2024</caption>
+<thead><tr><th></th><th>Plan</th><th>Ist</th><th>Abw.</th></tr></thead><tbody>
+<tr><td>Umsatz</td><td>2,15 Mrd. €</td><td>2,18 Mrd. €</td><td class="fav">+34 Mio. €</td></tr>
+<tr><td>Material</td><td>1,11 Mrd. €</td><td>1,14 Mrd. €</td><td class="unf">+27 Mio. €</td></tr>
+<tr><td>EBIT</td><td>147 Mio. €</td><td>182 Mio. €</td><td class="fav">+35 Mio. €</td></tr></tbody></table>
+</div>
+<p class="meta">Abweichung = Ist − Plan. Grün: günstig, rot: ungünstig (Material über Plan). Electronics verfehlt den Umsatzplan leicht (−1,4 %), Mechanics den EBIT-Plan.</p>
+</div></section>
+<section><div class="wrap">
+<h2>Aus einem Fehler wurde ein Prinzip</h2>
+<p>Bei der Prüfung gegen die Rohdaten zeigte sich ein typischer Controlling-Fehler: Ist-Werte aus zwei Jahren wurden mit dem Plan eines Jahres verglichen, die Abweichungen fielen um ein Vielfaches zu hoch aus. Die Lösung sind periodengleiche DAX-Measures, die nur Jahre vergleichen, in denen Plan und Ist vorliegen, und eine feste Planversion je Auswahl. Weitere Korrekturen: einheitliche Region-Bezeichnungen und die Trennung von Volumen- und Umsatzanteilen.</p>
+</div></section>
+<section><div class="wrap">
+<h2>Dashboard und Werkzeuge</h2>
+<p>Sternschema mit drei Faktentabellen (OI, Ist, Plan) und den Dimensionen Kunde, Projekt, Organisation, Mitarbeitende, Jahr und Version.</p>
+<ul class="pages"><li>Overview</li><li>Business Units</li><li>Material</li><li>Customers</li><li>Employees</li><li>Sales Performance</li><li>Plan-Act</li></ul>
+<ul class="tools"><li>Power BI</li><li>DAX</li><li>Power Query</li><li>Excel</li><li>PowerPoint</li></ul>
+</div></section>
+<section><div class="wrap">
+<h2>Downloads</h2>
+<div class="dl">
+<div><a href="files/Case_Study_Controlling_Dashboard.pdf" download>Case Study (PDF)</a><span>Zusammenfassung auf 2 Seiten, 0,1 MB.</span></div>
+<div><a href="files/BIC_Dashboard.pbix" download>Power-BI-Datei (.pbix)</a><span>Das vollständige Dashboard mit 7 Seiten. Öffnen mit Power BI Desktop (kostenlos für Windows), 0,1 MB.</span></div>
+<div><a href="files/BIC_PowerPoint_StA.pptx" download>Präsentation (.pptx)</a><span>Abschlusspräsentation der Studienarbeit, 3,6 MB.</span></div>
+</div>
+</div></section>
+<section><div class="wrap">
+<h2>Kontakt</h2>
+<p class="contact">[Dein Name] · [E-Mail] · [LinkedIn-Link]</p>
+</div></section>
+</main>
+<footer><div class="wrap">Kennzahlen aus dem Power-BI-Modell. Auftragseingang, Ist-Umsatz und Plan_2023 wurden gegen die Rohdaten geprüft. Stand: November 2026.</div></footer>
+</body>
+</html>
